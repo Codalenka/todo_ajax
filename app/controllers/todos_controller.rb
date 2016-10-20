@@ -29,9 +29,8 @@ class TodosController < ApplicationController
     @todo = Todo.new(todo_params)
 
     respond_to do |format|
-      if @todo.save
-        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
-        format.json { render :show, status: :created, location: @todo }
+        if @todo.save
+          format.html { redirect_to todos_path, notice: 'Todo was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
@@ -74,4 +73,5 @@ class TodosController < ApplicationController
       params.require(:todo).permit(:title, :completed)
     end
   end
+
 
