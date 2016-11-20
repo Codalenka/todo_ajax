@@ -5,7 +5,6 @@ class TodosController < ApplicationController
   # GET /todos.json
   def index
     @todo = Todo.new
-    # also order the todo's
     @todos = Todo.order(:id)
   end
 
@@ -29,8 +28,9 @@ class TodosController < ApplicationController
     @todo = Todo.new(todo_params)
 
     respond_to do |format|
-        if @todo.save
-          format.html { redirect_to todos_path, notice: 'Todo was successfully created.' }
+      if @todo.save
+        format.html { redirect_to todos_path, notice: 'Todo was successfully created.' }
+        format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :new }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
@@ -42,9 +42,9 @@ class TodosController < ApplicationController
   # PATCH/PUT /todos/1.json
   def update
     respond_to do |format|
-      if @todo.save
-        format.html { redirect_to todos_path, notice: 'Todo was successfully created.' }
-
+      if @todo.update(todo_params)
+        format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
+        format.json { render :show, status: :ok, location: @todo }
       else
         format.html { render :edit }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
@@ -72,6 +72,4 @@ class TodosController < ApplicationController
     def todo_params
       params.require(:todo).permit(:title, :completed)
     end
-  end
-
-
+end
