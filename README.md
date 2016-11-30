@@ -1,24 +1,20 @@
-# README
+# Todo ajax
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple to-do list in Rails using ajax. 
 
-Things you may want to cover:
+![screenshot from 2016-11-30 19-20-36](https://cloud.githubusercontent.com/assets/22615915/20765464/b5d585e0-b732-11e6-86ac-e6455e9dd62a.png)
 
-* Ruby version
 
-* System dependencies
+## Running Locally
 
-* Configuration
+Make sure you have [Ruby](https://www.ruby-lang.org/en/) and [Bundler](http://bundler.io/) installed.
 
-* Database creation
+```bash
+git@github.com:MalenkavanOmmen/todo_ajax.git
+cd todo_ajax
+bundle install
+rake db:create db:migrate db:seed
+rails server
+```
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
